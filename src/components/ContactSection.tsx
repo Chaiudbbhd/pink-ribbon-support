@@ -40,7 +40,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
+    <section id="contact" className="py-24 bg-card relative overflow-hidden scroll-mt-20">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary/50 to-transparent" />
       <div className="absolute inset-0 ribbon-pattern opacity-10" />

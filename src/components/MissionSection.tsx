@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const MissionSection = () => {
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
+    <section id="mission" className="py-24 bg-card relative overflow-hidden scroll-mt-20">
       {/* Subtle ribbon pattern */}
       <div className="absolute inset-0 ribbon-pattern opacity-20" />
       
