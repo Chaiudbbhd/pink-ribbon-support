@@ -29,7 +29,7 @@ const awarenessPoints = [
 
 const AwarenessSection = () => {
   return (
-    <section className="py-24 bg-background relative">
+    <section id="awareness" className="py-24 bg-background relative scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-up">
