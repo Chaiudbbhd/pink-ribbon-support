@@ -27,23 +27,27 @@ const supportOrganizations = [
 
 const hotlines = [
   {
-    name: "Cancer Information Service",
-    phone: "1-800-4-CANCER",
+    name: "Cancer Care Helpline",
+    phone: "+91 98765 43210",
+    label: "(Demo Number)",
     description: "Free, confidential cancer information and support 24/7.",
   },
   {
-    name: "American Cancer Society Helpline",
-    phone: "1-800-227-2345",
+    name: "National Cancer Support Line",
+    phone: "+91 87654 32109",
+    label: "(Demo Number)",
     description: "Connect with trained specialists for support and guidance.",
   },
   {
-    name: "Cancer Support Community",
-    phone: "1-888-793-9355",
+    name: "Emotional Support Helpline",
+    phone: "+91 76543 21098",
+    label: "(Demo Number)",
     description: "Free emotional support and counseling services.",
   },
   {
     name: "Breast Cancer Helpline",
-    phone: "1-877-465-6636",
+    phone: "+91 65432 10987",
+    label: "(Demo Number)",
     description: "Specialized support for breast cancer patients and families.",
   },
 ];
@@ -51,18 +55,21 @@ const hotlines = [
 const educationalResources = [
   {
     title: "Understanding Cancer",
-    description: "Learn about different types of cancer, stages, and treatment options.",
+    description: "Comprehensive guide to cancer types, stages, and treatment options from WHO.",
     icon: BookOpen,
+    url: "https://www.who.int/health-topics/cancer",
   },
   {
     title: "Prevention & Screening",
-    description: "Guidelines for early detection and reducing cancer risk.",
+    description: "Evidence-based guidelines for early detection and risk reduction from CDC.",
     icon: Heart,
+    url: "https://www.cdc.gov/cancer/prevention/index.htm",
   },
   {
     title: "Caregiver Support",
-    description: "Resources and tips for those caring for cancer patients.",
+    description: "Resources for those caring for cancer patients from Cancer.Net.",
     icon: Users,
+    url: "https://www.cancer.net/coping-with-cancer/caring-loved-one",
   },
 ];
 
@@ -152,11 +159,11 @@ const ResourcesPage = () => {
                   {hotline.description}
                 </p>
                 <a
-                  href={`tel:${hotline.phone.replace(/[^0-9]/g, "")}`}
+                  href={`tel:${hotline.phone.replace(/[^0-9\+]/g, "")}`}
                   className="inline-flex items-center gap-2 mt-4 bg-primary/10 text-primary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  {hotline.phone}
+                  {hotline.phone} <span className="text-muted-foreground font-normal text-sm">{hotline.label}</span>
                 </a>
               </div>
             ))}
@@ -178,20 +185,27 @@ const ResourcesPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {educationalResources.map((resource) => (
-              <div
+              <a
                 key={resource.title}
-                className="bg-card rounded-2xl p-8 card-hover text-center"
+                href={resource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-card rounded-2xl p-8 card-hover text-center"
               >
-                <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <resource.icon className="w-8 h-8 text-secondary-foreground" />
+                <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary transition-colors duration-300">
+                  <resource.icon className="w-8 h-8 text-secondary-foreground group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {resource.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground mb-4">
                   {resource.description}
                 </p>
-              </div>
+                <span className="inline-flex items-center gap-1 text-primary text-sm font-medium">
+                  Learn More
+                  <ExternalLink className="w-3 h-3" />
+                </span>
+              </a>
             ))}
           </div>
         </div>
